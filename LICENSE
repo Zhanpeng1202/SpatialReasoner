@@ -173,6 +173,18 @@
       incurred by, or claims asserted against, such Contributor by reason
       of your accepting any such warranty or additional liability.
 
+  10. This project includes dependencies on third-party software projects, 
+      such as DUSt3R, CUT3R. DUSt3R is licensed under the Creative Commons 
+      Attribution-NonCommercial-ShareAlike 4.0 license (CC BY-NC-SA 4.0). 
+      This license imposes restrictions, including a prohibition on commercial use. 
+      The license terms of DUSt3R can be reviewed at:
+      - https://creativecommons.org/licenses/by-nc-sa/4.0/
+      - https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+    
+      The training and other core functionalities of this project are 
+      independent of DUSt3R/CUT3R and are licensed under the Apache License 2.0. 
+      Users must ensure compliance with the terms of all licenses when using this project.
+
    END OF TERMS AND CONDITIONS
 
    APPENDIX: How to apply the Apache License to your work.
