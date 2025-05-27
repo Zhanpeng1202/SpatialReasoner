@@ -4,17 +4,20 @@
 
 The rapid advancement of Large Multimodal Models (LMMs) for 2D images and videos has motivated extending these models to understand 3D scenes, aiming for human-like visual-spatial intelligence. VLM-3R processes monocular video frames by employing a geometry encoder to derive implicit 3D tokens that represent spatial understanding. Through the utilization of Spatial-Visual–View Fusion technique and over 200K curated 3D reconstructive instruction tuning question-answer (QA) pairs, VLM-3R effectively aligns real-world spatial context with language instructions. This enables the model to perform monocular 3D spatial assistance and embodied reasoning.
 
-[**Paper (arXiv)**](https://arxiv.org/abs/2403.xxxxx) **|** [**Code (GitHub)**](https://github.com/VITA-Group/VLM-3R) **|** [**Datasets & Benchmarks**](https://gemini.google.com/app/2dca1b9e28eaf41b#datasets--benchmarks)
+[**Paper (arXiv)**](https://arxiv.org/abs/2403.xxxxx) **|** [**Project Page**](https://vlm-3r.github.io/) **|** [**Code (GitHub)**](https://github.com/VITA-Group/VLM-3R) **|** **Datasets & Benchmarks (Coming Soon)**
 
 ## 🧑‍💻 Authors
 
-Zhiwen Fan1†*, Jian Zhang2*, Renjie Li3, Junge Zhang4, Runjin Chen1, Hezhen Hu1, Kevin Wang1, Huaizhi Qu5, Dilin Wang6, Zhicheng Yan6, Hongyu Xu6, Justin Theiss6, Tianlong Chen5, Jiachen Li4, Zhengzhong Tu3, Zhangyang Wang1, Rakesh Ranjan6
+Zhiwen Fan¹†\*, Jian Zhang²\*, Renjie Li³, Junge Zhang⁴, Runjin Chen¹, Hezhen Hu¹, Kevin Wang¹, Huaizhi Qu⁵, Dilin Wang⁶, Zhicheng Yan⁶, Hongyu Xu⁶, Justin Theiss⁶, Tianlong Chen⁵, Jiachen Li⁴, Zhengzhong Tu³, Zhangyang Wang¹, Rakesh Ranjan⁶
 
-1UT Austin   2XMU   3TAMU   4UCR   5UNC   6Meta
+¹UT Austin   ²XMU   ³TAMU   ⁴UCR   ⁵UNC   ⁶Meta
 
-†Corresponding Author. *Equal contribution.
+†Corresponding Author. \*Equal contribution.
 
 (zhiwenfan@utexas.edu)
+
+## Overview
+![VLM-3R Project Overview](docs/images/teaser_00.jpg)
 
 ## 🚀 Key Innovations
 
@@ -29,9 +32,9 @@ The core of VLM-3R is a pre-trained Large Multimodal Model (LMM), integrated wit
 
 **Architecture Overview Diagram:**
 
-[Image of VLM3R Network Architecture Diagram](https://www.researchgate.net/publication/335362799/figure/fig1/AS:885101370015744@1588036019473/Long-Range-Wide-Area-Network-LoRaWAN-Architecture.png)
+[Video of VLM3R Network Architecture Demonstration](https://github.com/user-attachments/assets/f82f7905-879f-414a-a690-99fc471f2a50)
 
-*Caption: Our method takes monocular video and language instruction as input. Visual Encoder coupled with Spatial Encoder extract frame-level appearance, camera view position, and globally aligned geometry. Visual-Geometry Fusion integrates these through attention and projection layers to create 3D-aware visual features for the LMM. During the inference stage, this fusion enables reliable spatial and temporal reasoning.*
+*Our method takes monocular video and language instruction as input. Visual Encoder coupled with Spatial Encoder extract frame-level appearance, camera view position, and globally aligned geometry. Visual-Geometry Fusion integrates these through attention and projection layers to create 3D-aware visual features for the LMM. During the inference stage, this fusion enables reliable spatial and temporal reasoning.*
 
 **Key Components:**
 
