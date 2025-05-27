@@ -4,7 +4,7 @@
 
 The rapid advancement of Large Multimodal Models (LMMs) for 2D images and videos has motivated extending these models to understand 3D scenes, aiming for human-like visual-spatial intelligence. VLM-3R processes monocular video frames by employing a geometry encoder to derive implicit 3D tokens that represent spatial understanding. Through the utilization of Spatial-Visual–View Fusion technique and over 200K curated 3D reconstructive instruction tuning question-answer (QA) pairs, VLM-3R effectively aligns real-world spatial context with language instructions. This enables the model to perform monocular 3D spatial assistance and embodied reasoning.
 
-[**Paper (arXiv)**](https://arxiv.org/abs/2403.xxxxx) **|** [**Project Page**](https://vlm-3r.github.io/) **|** [**Code (GitHub)**](https://github.com/VITA-Group/VLM-3R) **|** **Datasets & Benchmarks (Coming Soon)**
+[**Paper (arXiv)**](https://arxiv.org/abs/2505.20279) **|** [**Project Page**](https://vlm-3r.github.io/) **|** [**Code (GitHub)**](https://github.com/VITA-Group/VLM-3R) **|** **Datasets & Benchmarks (Coming Soon)**
 
 ## 🧑‍💻 Authors
 
