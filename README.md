@@ -29,7 +29,7 @@ The core of VLM-3R is a pre-trained Large Multimodal Model (LMM), integrated wit
 
 **Architecture Overview Diagram:**
 
-[Image of VLM3R Network Architecture Diagram](https://www.researchgate.net/publication/335362799/figure/fig1/AS:885101370015744@1588036019473/Long-Range-Wide-Area-Network-LoRaWAN-Architecture.png)
+[Image of VLM3R Network Architecture Diagram](https://github.com/user-attachments/assets/f82f7905-879f-414a-a690-99fc471f2a50)
 
 *Caption: Our method takes monocular video and language instruction as input. Visual Encoder coupled with Spatial Encoder extract frame-level appearance, camera view position, and globally aligned geometry. Visual-Geometry Fusion integrates these through attention and projection layers to create 3D-aware visual features for the LMM. During the inference stage, this fusion enables reliable spatial and temporal reasoning.*
 
