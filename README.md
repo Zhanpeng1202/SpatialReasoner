@@ -8,26 +8,7 @@ The rapid advancement of Large Multimodal Models (LMMs) for 2D images and videos
 
 ## 🧑‍💻 Authors
 
-            <h3>Authors</h3>
-            <p>
-                <a href="https://zhiwenfan.github.io/" target="_blank">Zhiwen Fan</a><sup>1&dagger;*</sup>,
-                <a href="https://jian-zhang-3dv.github.io/Jian-Zhang-3DV/" target="_blank">Jian Zhang</a><sup>2*</sup>,
-                <a href="https://shadowiterator.github.io/" target="_blank">Renjie Li</a><sup>3</sup>,
-                <a href="https://andy-zd.github.io/" target="_blank">Junge Zhang</a><sup>4</sup>,
-                <a href="https://chenrunjin.github.io/" target="_blank">Runjin Chen</a><sup>1</sup>,
-                <a href="https://alexhu.top/" target="_blank">Hezhen Hu</a><sup>1</sup>,
-                <a href="https://www.kevin-ai.com/" target="_blank">Kevin Wang</a><sup>1</sup>,
-                <a href="https://sites.google.com/view/qhz991029" target="_blank">Huaizhi Qu</a><sup>5</sup>,
-                <a href="https://wdilin.github.io/" target="_blank">Dilin Wang</a><sup>6</sup>,
-                <a href="https://sites.google.com/view/zhicheng-yan" target="_blank">Zhicheng Yan</a><sup>6</sup>,
-                <a href="https://hyxu2006.github.io/" target="_blank">Hongyu Xu</a><sup>6</sup>,
-                <a href="https://www.linkedin.com/in/justin-d-theiss" target="_blank">Justin Theiss</a><sup>6</sup>,
-                <a href="https://tianlong-chen.github.io/" target="_blank">Tianlong Chen</a><sup>5</sup>,
-                <a href="https://jiachenli94.github.io/" target="_blank">Jiachen Li</a><sup>4</sup>,
-                <a href="https://vztu.github.io/" target="_blank">Zhengzhong Tu</a><sup>3</sup>,
-                <a href="https://vita-group.github.io/research.html" target="_blank">Zhangyang Wang</a><sup>1</sup>,
-                <a href="https://www.linkedin.com/in/rakesh-r-3848538" target="_blank">Rakesh Ranjan</a><sup>6</sup>
-            </p>
+[Zhiwen Fan](https://zhiwenfan.github.io/)<sup>1&dagger;\*</sup>, [Jian Zhang](https://jian-zhang-3dv.github.io/Jian-Zhang-3DV/)<sup>2\*</sup>, [Renjie Li](https://shadowiterator.github.io/)<sup>3</sup>, [Junge Zhang](https://andy-zd.github.io/)<sup>4</sup>, [Runjin Chen](https://chenrunjin.github.io/)<sup>1</sup>, [Hezhen Hu](https://alexhu.top/)<sup>1</sup>, [Kevin Wang](https://www.kevin-ai.com/)<sup>1</sup>, [Huaizhi Qu](https://sites.google.com/view/qhz991029)<sup>5</sup>, [Dilin Wang](https://wdilin.github.io/)<sup>6</sup>, [Zhicheng Yan](https://sites.google.com/view/zhicheng-yan)<sup>6</sup>, [Hongyu Xu](https://hyxu2006.github.io/)<sup>6</sup>, [Justin Theiss](https://www.linkedin.com/in/justin-d-theiss)<sup>6</sup>, [Tianlong Chen](https://tianlong-chen.github.io/)<sup>5</sup>, [Jiachen Li](https://jiachenli94.github.io/)<sup>4</sup>, [Zhengzhong Tu](https://vztu.github.io/)<sup>3</sup>, [Zhangyang Wang](https://vita-group.github.io/research.html)<sup>1</sup>, [Rakesh Ranjan](https://www.linkedin.com/in/rakesh-r-3848538)<sup>6</sup>
 
 ¹UT Austin   ²XMU   ³TAMU   ⁴UCR   ⁵UNC   ⁶Meta
 
