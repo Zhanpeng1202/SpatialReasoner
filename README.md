@@ -180,6 +180,9 @@ bash eval_vlm_3r.sh
 
 ## 📰 News
 
+- **2025-06-03:** VSiBench evaluation code released.
+- **2025-05-27:** Inference code and model weights released.
+
 ## 📝 TODO List
 
 - [x] Release model weights and inference code
