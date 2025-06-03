@@ -26,6 +26,11 @@ The rapid advancement of Large Multimodal Models (LMMs) for 2D images and videos
 - **Spatial-Visual-View Fusion:** A novel fusion mechanism integrates 3D geometric tokens, per-view camera tokens, and 2D appearance features for joint spatio-linguistic understanding.
 - **Vision-Spatial-Temporal Intelligence Benchmark (VSTI-Bench):** A new benchmark with over 138.6K QA pairs, specifically designed to evaluate the model's understanding of spatio-temporal relationships evolving from camera motion within 3D environments.
 
+## 📰 News
+
+- **2025-06-03:** VSiBench evaluation code released.
+- **2025-05-27:** Inference code and model weights released.
+
 ## 🛠️ VLM-3R Architecture
 
 The core of VLM-3R is a pre-trained Large Multimodal Model (LMM), integrated with modules for deriving geometric encodings, camera view encodings, and visual features from the input video; these diverse inputs are subsequently fused effectively with language representations. VLM-3R does not rely on pre-built 3D maps or external depth sensors. This design directly addresses key limitations of existing approaches, such as the common inadequacy of Video LLMs in perceiving rich spatial context from monocular video and the restrictive dependency of many specialized 3D-LLMs on prior 3D map or depth sensor inputs.
@@ -177,11 +182,6 @@ Then, you can run the evaluation script:
 ```bash
 bash eval_vlm_3r.sh
 ```
-
-## 📰 News
-
-- **2025-06-03:** VSiBench evaluation code released.
-- **2025-05-27:** Inference code and model weights released.
 
 ## 📝 TODO List
 
