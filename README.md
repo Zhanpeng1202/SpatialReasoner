@@ -154,11 +154,37 @@ The model weights include:
 - Configuration files
 - Other necessary model files
 
+## 📈 Evaluation
+
+To run the evaluation, first set up the environment:
+
+```bash
+cd thinking-in-space # Ensure you are in the correct directory if it's a submodule
+
+conda create --name vsibench python=3.10 -y
+conda activate vsibench
+conda install pytorch==2.1.1 torchvision==0.16.1 torchaudio==2.1.1 pytorch-cuda=12.1 -c pytorch -c nvidia -y
+
+pip install -e .
+pip install s2wrapper@git+https://github.com/bfshi/scaling_on_scales
+# Note: The FlashAttention wheel URL might be specific. Consider verifying compatibility.
+pip install https://github.com/Dao-AILab/flash-attention/releases/download/v2.7.3/flash_attn-2.7.3+cu12torch2.1cxx11abiFALSE-cp310-cp310-linux_x86_64.whl
+pip install transformers==4.40.0 peft==0.10.0 google-generativeai google-genai huggingface_hub[hf_xet]
+```
+
+Then, you can run the evaluation script:
+
+```bash
+bash eval_vlm_3r.sh
+```
+
+## 📰 News
+
 ## 📝 TODO List
 
 - [x] Release model weights and inference code
 - [ ] Release training data, data generation scripts, and training scripts
-- [ ] Evaluate on VSiBench
+- [x] Evaluate on VSiBench
 - [ ] Release VSTiBench data and evaluation code
 
 ## 🙏 Acknowledgements
@@ -168,3 +194,19 @@ We would like to express our gratitude to the following projects for their valua
 - [CUT3R](https://github.com/CUT3R/CUT3R): Provides the spatial feature encoder used in our model.
 - [LLaVA-NeXT](https://github.com/LLaVA-VL/LLaVA-NeXT): Serves as the foundation for our codebase.
 - [thinking-in-space](https://github.com/vision-x-nyu/thinking-in-space): Offers important evaluation methods for 3D understanding capabilities of VLM.
+
+## 📜 Citation
+
+If you find VLM-3R useful for your research, please consider citing our paper:
+
+```bibtex
+@misc{fan2025vlm3rvisionlanguagemodelsaugmented,
+      title={VLM-3R: Vision-Language Models Augmented with Instruction-Aligned 3D Reconstruction}, 
+      author={Zhiwen Fan and Jian Zhang and Renjie Li and Junge Zhang and Runjin Chen and Hezhen Hu and Kevin Wang and Huaizhi Qu and Dilin Wang and Zhicheng Yan and Hongyu Xu and Justin Theiss and Tianlong Chen and Jiachen Li and Zhengzhong Tu and Zhangyang Wang and Rakesh Ranjan},
+      year={2025},
+      eprint={2505.20279},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2505.20279}, 
+}
+```
