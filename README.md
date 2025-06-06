@@ -28,6 +28,8 @@ The rapid advancement of Large Multimodal Models (LMMs) for 2D images and videos
 
 ## 📰 News
 
+- **2025-06-05:** VLM-3R data processing pipeline (including for VSiBench & VSTiBench) released.
+  - **Note:** The data generation code for the `route plan` task in VSiBench is still being organized and is not yet open-sourced.
 - **2025-06-03:** VSiBench evaluation code released.
 - **2025-05-27:** Inference code and model weights released.
 
@@ -58,6 +60,7 @@ The core of VLM-3R is a pre-trained Large Multimodal Model (LMM), integrated wit
 
 ## 📊 Datasets & Benchmarks
 
+- **Data Generation Scripts:** The scripts for generating our instruction tuning data are now available. Please refer to the [`vlm_3r_data_process/README.md`](vlm_3r_data_process/README.md) for detailed instructions.
 - **Multimodal Spatial Instruction Data Generation:** A scalable, automated data generation pipeline produced over **200,000** general question-answer pairs for spatial reasoning from monocular video, and **4,225** embodied route planning data instances generated using simulators. This data is derived from existing 3D datasets like ScanNet, ScanNet++, and ARKitScenes, processed via detailed spatio-temporal scene graphs to automatically generate QA pairs for tasks such as object counting, relative distance/direction, appearance order, object size, absolute distance, and room size.
 - **Vision-Spatial-Temporal Intelligence Benchmark (VSTI-Bench):** Contains approximately **138,600** QA pairs, distributed across three main categories: Camera Dynamics (49.6%), Camera-Object Interactions (38.4%), and Object Relative Position (12.0%). It is designed to assess LMMs' ability to perceive and reason about relative camera/object motion, dynamic object-camera relationships, and evolving spatial configurations.
 
@@ -186,8 +189,9 @@ bash eval_vlm_3r.sh
 ## 📝 TODO List
 
 - [x] Release model weights and inference code
-- [ ] Release training data, data generation scripts, and training scripts
 - [x] Evaluate on VSiBench
+- [x] Release data generation scripts (Note: script for VSiBench's `route plan` task is pending).
+- [ ] Release training data and training scripts
 - [ ] Release VSTiBench data and evaluation code
 
 ## 🙏 Acknowledgements
