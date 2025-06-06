@@ -16,6 +16,13 @@ The rapid advancement of Large Multimodal Models (LMMs) for 2D images and videos
 
 (zhiwenfan@utexas.edu)
 
+## 📰 News
+
+- **2025-06-06:** VLM-3R data processing pipeline (including for VSiBench & VSTiBench) released.
+  - **Note:** The data generation code for the `route plan` task in VSiBench is still being organized and is not yet open-sourced.
+- **2025-06-03:** VSiBench evaluation code released.
+- **2025-05-27:** Inference code and model weights released.
+
 ## Overview
 ![VLM-3R Project Overview](docs/images/teaser_00.jpg)
 
@@ -25,13 +32,6 @@ The rapid advancement of Large Multimodal Models (LMMs) for 2D images and videos
 - **3D Reconstructive Instruction Tuning:** Instruction tuning with over 200K QA pairs enables the model to effectively align visual information with 3D spatial context and language instructions.
 - **Spatial-Visual-View Fusion:** A novel fusion mechanism integrates 3D geometric tokens, per-view camera tokens, and 2D appearance features for joint spatio-linguistic understanding.
 - **Vision-Spatial-Temporal Intelligence Benchmark (VSTI-Bench):** A new benchmark with over 138.6K QA pairs, specifically designed to evaluate the model's understanding of spatio-temporal relationships evolving from camera motion within 3D environments.
-
-## 📰 News
-
-- **2025-06-05:** VLM-3R data processing pipeline (including for VSiBench & VSTiBench) released.
-  - **Note:** The data generation code for the `route plan` task in VSiBench is still being organized and is not yet open-sourced.
-- **2025-06-03:** VSiBench evaluation code released.
-- **2025-05-27:** Inference code and model weights released.
 
 ## 🛠️ VLM-3R Architecture
 
