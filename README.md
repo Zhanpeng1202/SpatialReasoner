@@ -4,7 +4,7 @@
 
 The rapid advancement of Large Multimodal Models (LMMs) for 2D images and videos has motivated extending these models to understand 3D scenes, aiming for human-like visual-spatial intelligence. VLM-3R processes monocular video frames by employing a geometry encoder to derive implicit 3D tokens that represent spatial understanding. Through the utilization of Spatial-Visual–View Fusion technique and over 200K curated 3D reconstructive instruction tuning question-answer (QA) pairs, VLM-3R effectively aligns real-world spatial context with language instructions. This enables the model to perform monocular 3D spatial assistance and embodied reasoning.
 
-[**Paper (arXiv)**](https://arxiv.org/abs/2505.20279) **|** [**Project Page**](https://vlm-3r.github.io/) **|** [**Code (GitHub)**](https://github.com/VITA-Group/VLM-3R) **|** **Datasets & Benchmarks (Coming Soon)**
+[**Paper (arXiv)**](https://arxiv.org/abs/2505.20279) **|** [**Project Page**](https://vlm-3r.github.io/) **|** [**Code (GitHub)**](https://github.com/VITA-Group/VLM-3R) **|** [**Dataset (HF)**](https://huggingface.co/datasets/Journey9ni/VLM-3R-DATA) **|** [**VSTiBench (HF)**](https://huggingface.co/datasets/Journey9ni/vstibench)
 
 ## 🧑‍💻 Authors
 
@@ -18,6 +18,9 @@ The rapid advancement of Large Multimodal Models (LMMs) for 2D images and videos
 
 ## 📰 News
 
+- **2025-06-11:** We have released the training/evaluation scripts and all associated data.
+  - The main instruction tuning dataset, which includes training data for VSiBench and VSTiBench, is available on Hugging Face at [Journey9ni/VLM-3R-DATA](https://huggingface.co/datasets/Journey9ni/VLM-3R-DATA).
+  - The test set for VSTiBench can be found at [Journey9ni/vstibench](https://huggingface.co/datasets/Journey9ni/vstibench).
 - **2025-06-06:** VLM-3R data processing pipeline (including for VSiBench & VSTiBench) released.
   - **Note:** The data generation code for the `route plan` task in VSiBench is still being organized and is not yet open-sourced.
 - **2025-06-03:** VSiBench evaluation code released.
@@ -60,9 +63,10 @@ The core of VLM-3R is a pre-trained Large Multimodal Model (LMM), integrated wit
 
 ## 📊 Datasets & Benchmarks
 
+- **Instruction Tuning & Benchmark Training Data:** Our main instruction tuning dataset is publicly available on Hugging Face. This dataset also includes the training data for VSiBench and VSTiBench: [Journey9ni/VLM-3R-DATA](https://huggingface.co/datasets/Journey9ni/VLM-3R-DATA).
 - **Data Generation Scripts:** The scripts for generating our instruction tuning data are now available. Please refer to the [`vlm_3r_data_process/README.md`](vlm_3r_data_process/README.md) for detailed instructions.
 - **Multimodal Spatial Instruction Data Generation:** A scalable, automated data generation pipeline produced over **200,000** general question-answer pairs for spatial reasoning from monocular video, and **4,225** embodied route planning data instances generated using simulators. This data is derived from existing 3D datasets like ScanNet, ScanNet++, and ARKitScenes, processed via detailed spatio-temporal scene graphs to automatically generate QA pairs for tasks such as object counting, relative distance/direction, appearance order, object size, absolute distance, and room size.
-- **Vision-Spatial-Temporal Intelligence Benchmark (VSTI-Bench):** Contains approximately **138,600** QA pairs, distributed across three main categories: Camera Dynamics (49.6%), Camera-Object Interactions (38.4%), and Object Relative Position (12.0%). It is designed to assess LMMs' ability to perceive and reason about relative camera/object motion, dynamic object-camera relationships, and evolving spatial configurations.
+- **Vision-Spatial-Temporal Intelligence Benchmark (VSTI-Bench):** Contains approximately **138,600** QA pairs to assess LMMs' ability to perceive and reason about dynamic spatial configurations. The VSTiBench **test set** is available on [Hugging Face](https://huggingface.co/datasets/Journey9ni/vstibench).
 
 ## ⚙️ Setup
 
@@ -162,6 +166,60 @@ The model weights include:
 - Configuration files
 - Other necessary model files
 
+## 🚀 Training
+
+For detailed instructions on training the VLM-3R model, please refer to our primary training script as an example: `scripts/VLM_3R/train_vsibench.sh`.
+
+```bash
+# Example training command. Please see the script for more details.
+bash scripts/VLM_3R/train_vsibench.sh
+```
+
+**Important Note on Video Data:** We do not provide the raw video data from datasets like ScanNet, ScanNet++, or ARKitScenes. You will need to download and process them yourself. The training scripts expect the video data to follow a specific path structure. For instance, the anticipated path for a ScanNet video should be `data/vlm_3r_data/scannet/videos/scene0191_00.mp4`.
+
+**Optional: Pre-extracting Spatial Features**
+To significantly accelerate the training process, you can pre-extract spatial features from all your videos beforehand. This avoids redundant feature computation during each training epoch. You can use the provided script for this purpose:
+
+```bash
+# Example command for feature extraction
+python scripts/extract_spatial_features.py \\
+    --input-dir /path/to/your/video/dataset \\
+    --output-dir /path/to/save/extracted_features \\
+    --cut3r-weights-path /path/to/your/cut3r_weights.pth \\
+    --processor-config-path /path/to/your/processor_config.json \\
+    --gpu-ids 0,1,2,3
+```
+Please see the script for a full list of arguments. You will need to create the `processor_config.json` file with the following content:
+```json
+{
+  "do_convert_rgb": null,
+  "do_normalize": true,
+  "do_rescale": true,
+  "do_resize": true,
+  "image_mean": [
+    0.5,
+    0.5,
+    0.5
+  ],
+  "image_processor_type": "SiglipImageProcessor",
+  "image_std": [
+    0.5,
+    0.5,
+    0.5
+  ],
+  "processor_class": "LlavaProcessor",
+  "resample": 3,
+  "rescale_factor": 0.00392156862745098,
+  "size": {
+    "height": 384,
+    "width": 384
+  }
+}
+```
+After extracting the features, remember to update your training configuration to load these pre-computed features instead of processing raw videos.
+
+Make sure to configure the paths to your video data, benchmark datasets, and desired model output directories within the script.
+
 ## 📈 Evaluation
 
 To run the evaluation, first set up the environment:
@@ -180,10 +238,16 @@ pip install https://github.com/Dao-AILab/flash-attention/releases/download/v2.7.
 pip install transformers==4.40.0 peft==0.10.0 google-generativeai google-genai huggingface_hub[hf_xet]
 ```
 
-Then, you can run the evaluation script:
+Then, you can run the evaluation scripts for the VSiBench and VSTiBench benchmarks.
 
+**To evaluate on VSiBench:**
 ```bash
-bash eval_vlm_3r.sh
+bash eval_vlm_3r_vsibench.sh
+```
+
+**To evaluate on VSTiBench:**
+```bash
+bash eval_vlm_3r_vstibench.sh
 ```
 
 ## 📝 TODO List
@@ -191,8 +255,8 @@ bash eval_vlm_3r.sh
 - [x] Release model weights and inference code
 - [x] Evaluate on VSiBench
 - [x] Release data generation scripts (Note: script for VSiBench's `route plan` task is pending).
-- [ ] Release training data and training scripts
-- [ ] Release VSTiBench data and evaluation code
+- [x] Release training data and training scripts
+- [x] Release VSTiBench data and evaluation code
 
 ## 🙏 Acknowledgements
 
