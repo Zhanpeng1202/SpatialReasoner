@@ -14,7 +14,7 @@ class Cut3rPointsConfig(PretrainedConfig):
 
     def __init__(
         self,
-        weights_path="../CUT3R/src/cut3r_512_dpt_4_64.pth",
+        weights_path="/data/zhanpeng/weight/vlm3r/cut3r/cut3r_512_dpt_4_64.pth",
         **kwargs,
     ):
         super().__init__(**kwargs)

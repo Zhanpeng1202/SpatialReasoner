@@ -140,6 +140,7 @@ def run_inference(args):
                         overwrite_config["rope_scaling"] = {"factor": float(scaling_factor), "type": "linear"}
                     overwrite_config["max_sequence_length"] = 4096 * scaling_factor
                     overwrite_config["tokenizer_model_max_length"] = 4096 * scaling_factor
+                    
 
             tokenizer, model, image_processor, context_len = load_pretrained_model(args.model_path, args.model_base, model_name, load_8bit=args.load_8bit, overwrite_config=overwrite_config)
         else:

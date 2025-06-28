@@ -23,7 +23,7 @@ class Cut3rSpatialConfig(PretrainedConfig):
 
     def __init__(
         self,
-        weights_path="../CUT3R/src/cut3r_512_dpt_4_64.pth",
+        weights_path="/data/zhanpeng/weight/vlm3r/cut3r/cut3r_512_dpt_4_64.pth",
         spatial_tower_select_feature="patch",
         spatial_tower_select_layer=-1,
         export_point_cloud: bool = False,
@@ -107,6 +107,7 @@ def prepare_input(pixel_values):
 class Cut3rEncoder(nn.Module):
     def __init__(self, config: Cut3rSpatialConfig, **kwargs):
         super().__init__()
+        config.weights_path = "/data/zhanpeng/weight/vlm3r/cut3r/cut3r_512_dpt_4_64.pth"
         self.cut3r = ARCroco3DStereo.from_pretrained(config.weights_path)
         self.cut3r.eval()
         self.config = config
@@ -125,7 +126,7 @@ class Cut3rEncoder(nn.Module):
             return
 
         try:
-            # Determine batch size (B) from the first frame's output if available
+            # Determine batch decoder_config_dict = decoder_config.to_dict()size (B) from the first frame's output if available
             if 'pts3d_in_other_view' not in ress[0] or ress[0]['pts3d_in_other_view'] is None:
                  rank0_print("Warning: Cannot determine batch size from ress[0]. Skipping point cloud export.")
                  return

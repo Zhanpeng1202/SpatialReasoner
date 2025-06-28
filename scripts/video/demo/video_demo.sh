@@ -3,15 +3,15 @@
 export PYTHONWARNINGS=ignore
 export TOKENIZERS_PARALLELISM=false
 
-CKPT=$1
-CONV_MODE=$2
-FRAMES=$3
-POOL_STRIDE=$4
-POOL_MODE=$5
-NEWLINE_POSITION=$6
-OVERWRITE=$7
-VIDEO_PATH=$8
-MODEL_BASE=$9
+CKPT="Journey9ni/vlm-3r-llava-qwen2-lora"
+CONV_MODE="qwen_1_5"
+FRAMES=64
+POOL_STRIDE=2
+POOL_MODE=average
+NEWLINE_POSITION=grid
+OVERWRITE=True
+VIDEO_PATH="playground/demo/47334096.mp4"
+MODEL_BASE="lmms-lab/LLaVA-NeXT-Video-7B-Qwen2"
 
 if [ "$OVERWRITE" = False ]; then
     SAVE_DIR=$(basename $CKPT)_${CONV_MODE}_frames_${FRAMES}_stride_${POOL_STRIDE}_overwrite_${OVERWRITE}
@@ -20,7 +20,7 @@ else
     SAVE_DIR=$(basename $CKPT)_${CONV_MODE}_frames_${FRAMES}_stride_${POOL_STRIDE}
 fi
     
-python3 playground/demo/video_demo.py \
+CUDA_VISIBLE_DEVICES=7 python3 playground/demo/video_demo.py \
     --model-path $CKPT \
     --model-base ${MODEL_BASE} \
     --video_path ${VIDEO_PATH} \

@@ -10,7 +10,7 @@ def load_json_metadata(json_path):
     return metadata
 
 if __name__ == "__main__":
-    metadata_path = "data/processed_data/ScanNetpp/metadata/train/scannetpp_metadata_train.json"
+    metadata_path =   "data/processed_data/ScanNetpp/metadata/train/scannetpp_metadata_train.json"
     point_cloud_dir = "data/processed_data/ScanNetpp/point_cloud/train"
 
     metadata = load_json_metadata(metadata_path)

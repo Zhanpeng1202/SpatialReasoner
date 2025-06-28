@@ -22,7 +22,7 @@ import torch
 from llava.model import *
 from llava.constants import DEFAULT_IMAGE_PATCH_TOKEN, DEFAULT_IM_START_TOKEN, DEFAULT_IM_END_TOKEN
 from llava.utils import rank0_print
-
+from transformers import PretrainedConfig
 
 def load_pretrained_model(model_path, model_base, model_name, load_8bit=False, load_4bit=False, device_map="auto", torch_dtype="float16",attn_implementation="flash_attention_2", customized_config=None, overwrite_config=None, **kwargs):
     kwargs["device_map"] = device_map
@@ -91,11 +91,16 @@ def load_pretrained_model(model_path, model_base, model_name, load_8bit=False, l
                     rank0_print(f"Overwriting config with {overwrite_config}")
                     for k, v in overwrite_config.items():
                         setattr(lora_cfg_pretrained, k, v)
+
+                    # lora_cfg_pretrained = lora_cfg_pretrained.to_dict()
                     model = LlavaQwenForCausalLM.from_pretrained(model_base, low_cpu_mem_usage=False, attn_implementation=attn_implementation, config=lora_cfg_pretrained, **kwargs)
                 else:
                     overwrite_config = additional_config
                     for k, v in overwrite_config.items():
                         setattr(lora_cfg_pretrained, k, v)
+                    
+                    
+                    lora_cfg_pretrained = PretrainedConfig.from_dict(lora_cfg_pretrained)
                     model = LlavaQwenForCausalLM.from_pretrained(model_base, low_cpu_mem_usage=False, attn_implementation=attn_implementation, config=lora_cfg_pretrained, **kwargs)
                 # model.to(device="cuda", dtype=torch.float16)
 
@@ -131,7 +136,7 @@ def load_pretrained_model(model_path, model_base, model_name, load_8bit=False, l
             from peft import PeftModel
 
             rank0_print("Loading LoRA weights...")
-            model = PeftModel.from_pretrained(model, model_path)
+            model = PeftModel.from_pretrained(model, model_path,resume_download=True)
             rank0_print("Merging LoRA weights...")
             model = model.merge_and_unload()
             rank0_print("Model is loaded...")
