@@ -44,6 +44,7 @@ AVAILABLE_MODELS = {
     "xcomposer2d5": "XComposer2D5",
     "qwen2vl": "Qwen2VL",
     "vlm_3r": "Vlm3r",
+    "vlm_3r_tstar": "Vlm3rTstar",
 }
 
 

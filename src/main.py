@@ -20,7 +20,7 @@ import base64
 import openai
 
 from PIL import Image
-
+from datasets import load_dataset
 
 
 import numpy as np
@@ -88,7 +88,7 @@ def load_video(video_path,args):
     return spare_frames,frame_time,video_time
 
 
-def load_video_base64(path):
+def load_tstar_video(path):
     video = cv2.VideoCapture(path)
 
     base64Frames = []
@@ -100,7 +100,7 @@ def load_video_base64(path):
         base64Frames.append(base64.b64encode(buffer).decode("utf-8"))
 
     video.release()
-    # print(len(base64Frames), "frames read.")
+
     return base64Frames
 
 
@@ -167,10 +167,9 @@ def run_inference(args):
     if not os.path.exists(args.output_dir):
         os.makedirs(args.output_dir)
 
-    output_name = args.output_name
+    output_name  = args.output_name
     answers_file = os.path.join(args.output_dir, f"{output_name}.json")
-    ans_file = open(answers_file, "w")
-
+    ans_file     = open(answers_file, "w")
 
     video_path = args.video_path
 

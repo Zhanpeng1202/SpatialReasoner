@@ -34,7 +34,7 @@ METRICS_FOR_NA = {
 
 hf_home = os.getenv("HF_HOME", "~/.cache/huggingface/")
 base_cache_dir = os.path.expanduser(hf_home)
-with open(Path(__file__).parent / "vsibench.yaml", "r") as f:
+with open(Path(__file__).parent / "vsibench_star.yaml", "r") as f:
     raw_data = f.readlines()
     safe_data = []
     for i, line in enumerate(raw_data):
@@ -43,33 +43,20 @@ with open(Path(__file__).parent / "vsibench.yaml", "r") as f:
 cache_name = yaml.safe_load("".join(safe_data))["dataset_kwargs"]["cache_dir"]
 
 
-def vsibench_doc_to_visual(doc):
-    # cache_dir = os.path.join(base_cache_dir, cache_name)
-    # video_path = doc["dataset"] + "/" + doc["scene_name"] + ".mp4"
-    # video_path = os.path.join(cache_dir, video_path)
-    # if os.path.exists(video_path):
-    #     video_path = video_path
-    # else:
-    #     raise FileExistsError(f"video path:{video_path} does not exist.")
-    
-    # video_path = video_path + "_" + doc["question"]
-    
-    
-    cache_dir = "/data/zhanpeng/datasets/tstar/tstar_id"
-    scene = doc["scene_name"]
-    id    = str(doc["id"])
-    
-    video_path = os.path.join(cache_dir, scene, id,"frames")
-    
-    # test if this directory exists
-    if not os.path.exists(video_path):
+def vsibenchStar_doc_to_visual(doc):
+    cache_dir = os.path.join(base_cache_dir, cache_name)
+    video_path = doc["dataset"] + "/" + doc["scene_name"] + ".mp4"
+    video_path = os.path.join(cache_dir, video_path)
+    if os.path.exists(video_path):
+        video_path = video_path
+    else:
         raise FileExistsError(f"video path:{video_path} does not exist.")
     
-    # get all the frames in the directory
+    video_path = video_path + "_" + doc["question"]
     return [video_path]
 
 
-def vsibench_doc_to_text(doc, lmms_eval_specific_kwargs=None):
+def vsibenchStar_doc_to_text(doc, lmms_eval_specific_kwargs=None):
     question = doc["question"]
         
     pre_prompt = lmms_eval_specific_kwargs.get("pre_prompt", "") or "These are frames of a video."
