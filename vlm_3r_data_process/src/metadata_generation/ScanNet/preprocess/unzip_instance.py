@@ -12,13 +12,13 @@ def unzip_instance(args):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--input_dir', type=str, required=True)
-    parser.add_argument('--output_dir', type=str, required=True)
+    parser.add_argument('--input_dir', type=str, default="/data/Datasets/ScanNet/")
+    parser.add_argument('--output_dir', type=str,default="/data/Datasets/ScanNet/qa_subset_test")
     parser.add_argument('--num_workers', type=int, 
-                       default=max(1, multiprocessing.cpu_count() // 2),
+                       default=max(64, multiprocessing.cpu_count() // 6),
                        help='number of parallel workers')
     args = parser.parse_args()
-
+    print(args.num_workers)
     scans_dir = os.path.join(args.input_dir, 'scans')
     scene_dirs = [d for d in os.listdir(scans_dir) if os.path.isdir(os.path.join(scans_dir, d))]
 
@@ -36,6 +36,8 @@ def main():
             total=len(scene_dirs),
             desc="Unzipping instance files"
         ))
+    
+
 
 if __name__ == '__main__':
     main()
